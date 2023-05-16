@@ -192,13 +192,17 @@ void dlo::OdomNode::getParams() {
   ros::param::param<std::string>("~dlo/odomNode/odom_frame", this->odom_frame, "odom");
   ros::param::param<std::string>("~dlo/odomNode/child_frame", this->child_frame, "base_link");
 
-  // Get Node NS and Remove Leading Character
+  // Allow usage without namespace
   std::string ns = ros::this_node::getNamespace();
-  ns.erase(0,1);
+  if(!ns.empty())
+  {
+    // Get Node NS and Remove Leading Character
+    ns.erase(0,1);
 
-  // Concatenate Frame Name Strings
-  this->odom_frame = ns + "/" + this->odom_frame;
-  this->child_frame = ns + "/" + this->child_frame;
+    // Concatenate Frame Name Strings
+    this->odom_frame = ns + "/" + this->odom_frame;
+    this->child_frame = ns + "/" + this->child_frame;
+  }
 
   // Gravity alignment
   ros::param::param<bool>("~dlo/gravityAlign", this->gravity_align_, false);

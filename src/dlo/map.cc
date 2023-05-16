@@ -59,11 +59,13 @@ void dlo::MapNode::getParams() {
 
   // Get Node NS and Remove Leading Character
   std::string ns = ros::this_node::getNamespace();
-  ns.erase(0,1);
+  if(!ns.empty())
+  {
+    ns.erase(0,1);
 
-  // Concatenate Frame Name Strings
-  this->odom_frame = ns + "/" + this->odom_frame;
-
+    // Concatenate Frame Name Strings
+    this->odom_frame = ns + "/" + this->odom_frame;
+  }
 }
 
 
