@@ -59,7 +59,7 @@ void dlo::MapNode::getParams() {
 
   // Get Node NS and Remove Leading Character
   std::string ns = ros::this_node::getNamespace();
-  if(!ns.empty())
+  if(ns.compare("/") != 0)
   {
     ns.erase(0,1);
 

@@ -194,7 +194,7 @@ void dlo::OdomNode::getParams() {
 
   // Allow usage without namespace
   std::string ns = ros::this_node::getNamespace();
-  if(!ns.empty())
+  if(ns.compare("/") != 0)
   {
     // Get Node NS and Remove Leading Character
     ns.erase(0,1);
