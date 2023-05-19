@@ -243,4 +243,6 @@ private:
   int gicps2m_ransac_iter_;
   double gicps2m_ransac_inlier_thresh_;
 
+  bool print_to_terminal;
+
 };
